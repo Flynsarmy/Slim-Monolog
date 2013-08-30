@@ -72,9 +72,12 @@ class MonologWriter
 	 * @var array
 	 */
 	protected $log_level = array(
-		\Slim\Log::FATAL => \Monolog\Logger::CRITICAL,
+		\Slim\Log::EMERGENCY => \Monolog\Logger::EMERGENCY,
+		\Slim\Log::ALERT => \Monolog\Logger::ALERT,
+		\Slim\Log::CRITICAL => \Monolog\Logger::CRITICAL,
 		\Slim\Log::ERROR => \Monolog\Logger::ERROR,
 		\Slim\Log::WARN => \Monolog\Logger::WARNING,
+		\Slim\Log::NOTICE => \Monolog\Logger::NOTICE,
 		\Slim\Log::INFO => \Monolog\Logger::INFO,
 		\Slim\Log::DEBUG => \Monolog\Logger::DEBUG,
 	);
