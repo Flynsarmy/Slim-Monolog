@@ -1,5 +1,5 @@
 {
-    "name": "flynsarmy/slim-monolog",
+    "name": "xenowolf/slim-monolog",
     "type": "library",
     "description": "Monolog logging support Slim Framework",
     "keywords": ["logging", "extensions", "middleware"],
@@ -10,6 +10,11 @@
             "name": "Flyn San",
             "email": "flynsarmy@gmail.com",
             "homepage": "http://www.flynsarmy.com/"
+        },
+        {
+            "name": "XenoWolf",
+            "email": "xenowolf@gmail.com",
+            "homepage": "http://www.xenowolf.com/"
         }
     ],
     "require": {
