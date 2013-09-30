@@ -1,5 +1,5 @@
 {
-    "name": "xenowolf/slim-monolog",
+    "name": "learninghouse/slim-monolog",
     "type": "library",
     "description": "Monolog logging support Slim Framework",
     "keywords": ["logging", "extensions", "middleware"],
