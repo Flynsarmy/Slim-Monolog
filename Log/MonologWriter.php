@@ -126,11 +126,18 @@ class MonologWriter
 			foreach ( $this->settings['processors'] as $processor )
 				$this->resource->pushProcessor($processor);
 		}
+		
+		//We need to determine if there's a context to extract from the object
+		$context = array();
+		if(is_object($object) && isset($object->context)) {
+			$context = (array) $object->context;
+		}
 
 		// Don't bother typesetting $object, Monolog will do this for us
 		$this->resource->addRecord(
 			$this->get_log_level($level, \Monolog\Logger::WARNING),
-			$object
+			$object,
+			$context
 		);
 	}
 
