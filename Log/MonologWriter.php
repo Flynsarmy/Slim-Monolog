@@ -97,18 +97,23 @@ class MonologWriter
 	 * (array) Array of monolog processors - anonymous functions
 	 *
 	 * @param   array $settings
+	 * @param bool $merge
 	 * @return  void
 	 */
-	public function __construct($settings = array())
+	public function __construct($settings = array(), $merge = true)
 	{
 		//Merge user settings
-		$this->settings = array_merge(array(
-			'name' => 'SlimMonoLogger',
-			'handlers' => array(
-	        	new \Monolog\Handler\StreamHandler('./logs/'.date('y-m-d').'.log'),
-	        ),
-	        'processors' => array(),
-		), $settings);
+	        if ($merge) {
+	            $this->settings = array_merge(array(
+	                'name' => 'SlimMonoLogger',
+	                'handlers' => array(
+	                    new \Monolog\Handler\StreamHandler('./logs/'.date('y-m-d').'.log'),
+	                ),
+	                'processors' => array(),
+	            ), $settings);
+	        } else {
+	            $this->settings = $settings;
+	        }
 	}
 
 	/**
