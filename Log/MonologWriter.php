@@ -155,4 +155,14 @@ class MonologWriter
 			$this->log_level[$slim_log_level] :
 			$default_monolog_log_level;
 	}
+	
+	/**
+	* Returns the Logger resource
+	*
+	* @return [\Monolog\Logger] the Logger instance
+	*/
+	public function get_resource()
+	{
+		return $this->resource;
+	}
 }
