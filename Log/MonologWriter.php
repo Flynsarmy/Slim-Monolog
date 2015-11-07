@@ -125,18 +125,8 @@ class MonologWriter
 	 */
 	public function write($object, $level)
 	{
-		if ( !$this->resource )
-		{
-			// create a log channel
-			$this->resource = new \Monolog\Logger($this->settings['name']);
-			foreach ( $this->settings['handlers'] as $handler )
-				$this->resource->pushHandler($handler);
-			foreach ( $this->settings['processors'] as $processor )
-				$this->resource->pushProcessor($processor);
-		}
-
 		// Don't bother typesetting $object, Monolog will do this for us
-		$this->resource->addRecord(
+		$this->get_resource()->addRecord(
 			$this->get_log_level($level, \Monolog\Logger::WARNING),
 			$object
 		);
@@ -154,5 +144,24 @@ class MonologWriter
 		return isset($this->log_level[$slim_log_level]) ?
 			$this->log_level[$slim_log_level] :
 			$default_monolog_log_level;
+	}
+	
+	/**
+	* Returns the Logger resource
+	*
+	* @return [\Monolog\Logger] the Logger instance
+	*/
+	public function get_resource()
+	{
+		if ( !$this->resource )
+		{
+			// create a log channel
+			$this->resource = new \Monolog\Logger($this->settings['name']);
+			foreach ( $this->settings['handlers'] as $handler )
+				$this->resource->pushHandler($handler);
+			foreach ( $this->settings['processors'] as $processor )
+				$this->resource->pushProcessor($processor);
+		}		
+		return $this->resource;
 	}
 }
