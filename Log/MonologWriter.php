@@ -10,9 +10,7 @@
  * $app = new \Slim\Slim(array(
  *	 'log.writer' => new \Flynsarmy\SlimMonolog\Log\MonologWriter(array(
  *	 		'name' => 'SlimMonoLogger',
- *	        'handlers' => array(
- *	        	new \Monolog\Handler\StreamHandler('./logs/'.date('Y-m-d').'.log'),
- *	        ),
+ *	        'handlers' => array(),
  *	        'processors' => array(
  *	        	function ($record) {
  *				    $record['extra']['dummy'] = 'Hello world!';
