@@ -10,7 +10,9 @@
  * $app = new \Slim\Slim(array(
  *	 'log.writer' => new \Flynsarmy\SlimMonolog\Log\MonologWriter(array(
  *	 		'name' => 'SlimMonoLogger',
- *	        'handlers' => array(),
+ *	        'handlers' => array(
+ *				new \Monolog\Handler\StreamHandler('./logs/'.date('y-m-d').'.log'),
+ *			),
  *	        'processors' => array(
  *	        	function ($record) {
  *				    $record['extra']['dummy'] = 'Hello world!';
@@ -104,9 +106,7 @@ class MonologWriter
 	        if ($merge) {
 	            $this->settings = array_merge(array(
 	                'name' => 'SlimMonoLogger',
-	                'handlers' => array(
-	                    new \Monolog\Handler\StreamHandler('./logs/'.date('y-m-d').'.log'),
-	                ),
+	                'handlers' => array(),
 	                'processors' => array(),
 	            ), $settings);
 	        } else {
